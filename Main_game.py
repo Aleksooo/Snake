@@ -31,9 +31,10 @@ def render():
 
     for j in range(len(snake_len)):
         if j < len(snake_len) - 1:
-            screen.blit(body, (snake_len[j][0], snake_len[j][1])) # отрисовываем змейку
+            screen.blit(m_body, (snake_len[j][0], snake_len[j][1])) # отрисовываем змейку
         else:
             screen.blit(c_head, (snake_len[j][0], snake_len[j][1]))  # отрисовываем голову
+
 pygame.init()
 pygame.display.set_caption('Тритон')
 font = pygame.font.Font(None, 30)
@@ -72,34 +73,33 @@ while game == True:
         x += speed_x
         snake_len.append([x, y])
         del snake_len[0]
-        c_head = pygame.transform.rotate(head, 90)
+        c_head = pygame.transform.rotate(m_head, 90)
     elif count['right'] == True:
         speed_x = player_size_x
         speed_y = 0.0
         x += speed_x
         snake_len.append([x, y])
         del snake_len[0]
-        c_head = pygame.transform.rotate(head, -90)
+        c_head = pygame.transform.rotate(m_head, -90)
     elif count['up'] == True:
         speed_y = -player_size_y
         speed_x = 0.0
         y += speed_y
         snake_len.append([x, y])
         del snake_len[0]
-        c_head = head
+        c_head = m_head
     elif count['down'] == True:
         speed_y = player_size_y
         speed_x = 0.0
         y += speed_y
         snake_len.append([x, y])
         del snake_len[0]
-        c_head = pygame.transform.rotate(head, 180)
+        c_head = pygame.transform.rotate(m_head, 180)
 
     for i in range(len(snake_len) - 1):
         if x == snake_len[i][0] and y == snake_len[i][1]:
             sys.exit(0)
 
-    #print(snake_len)
     if eat == True: # находим положение еды
         pos_x, pos_y, colors = food()
         eat = False

@@ -33,7 +33,7 @@ def settings():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                sys.exit(9)
+                sys.exit(0)
             if event.type == pygame.MOUSEMOTION:
                 if dict['wid'][2] - 10 < pygame.mouse.get_pos()[0] < dict['wid'][4] + 10 and dict['wid'][3] - 10 < \
                         pygame.mouse.get_pos()[1] < dict['wid'][5] + 10:

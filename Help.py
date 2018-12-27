@@ -3,13 +3,14 @@ import pickle
 
 player_size_x = 20.0
 player_size_y = 20.0
-obj = {'width': 300, 'height': 300, 'speed': 400}
+obj = {'width': 300, 'height': 300, 'speed': 400, 'skin1': True, 'skin2': False, 'skin3': False}
 '''
 with open('text.txt', 'wb') as f:
     pickle.dump(obj, f)
 '''
 with open('text.txt', 'rb') as f:
     s = pickle.load(f)
+
 print(s)
 screen = pygame.display.set_mode((s['width'], s['height']))
 x = float(s['width'] / 2 - player_size_x / 2)
@@ -23,15 +24,32 @@ eat = True
 menu = False
 game = True
 set = True
+skin = False
 num = 1
 
-body = pygame.image.load('body.png')
-body = pygame.transform.scale(body, (20, 20))
+body1 = pygame.image.load('skin1\\body1.png')
+body1 = pygame.transform.scale(body1, (20, 20))
 
-head = pygame.image.load('head.png')
-head = pygame.transform.scale(head, (20, 20))
-c_head = head
+head1 = pygame.image.load('skin1\\head1.png')
+head1 = pygame.transform.scale(head1, (20, 20))
 
+
+body2 = pygame.image.load('skin2\\body2.png')
+body2 = pygame.transform.scale(body2, (20, 20))
+
+head2 = pygame.image.load('skin2\\head2.png')
+head2 = pygame.transform.scale(head2, (20, 20))
+
+if s['skin1'] == True:
+    m_head = head2
+    m_body = body2
+    c_head = head1
+'''
+elif s['skin2'] == True:
+    m_head = head2
+    m_body = body2
+    c_head = head2
+'''
 apple = pygame.image.load('food\\apple.png')  # импортируем яблоко
 apple = pygame.transform.scale(apple, (20, 20))
 
